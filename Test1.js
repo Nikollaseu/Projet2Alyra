@@ -35,7 +35,7 @@ contract('Voting', accounts => {
                 // Test du modifier onlyVoters
 
                 await expectRevert(votingContractInstance.addProposal("", { from: owner }), "You're not a voter");
-                await votingContractInstance.startProposalsRegistering({from: owner}); 
+                await votingContractInstance.startProposalsRegistering({from: owner}), "You're not a voter");
                 await expectRevert(votingContractInstance.getOneProposal(0, { from: owner }), "You're not a voter");
                 await expectRevert(votingContractInstance.setVote(0, { from: owner }), "You're not a voter");
             });
